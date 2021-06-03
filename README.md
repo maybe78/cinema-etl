@@ -1,7 +1,7 @@
 # Киносервис
 
 ## Запуск SQLite3
-```
+```bash
 docker run -d -it \
     --mount type=bind,source="$(pwd)"/db.sqlite,target=/app/db.sqlite \
     nouchka/sqlite3
@@ -12,4 +12,11 @@ Connected to a transient in-memory database.
 Use ".open FILENAME" to reopen on a persistent database.
 sqlite>
 sqlite> .quit
+```
+
+## Запуск Elastic
+```bash
+docker run -d -it -p 9200:9200 -p 9300:9300 \
+    -e "discovery.type=single-node"  \
+    docker.elastic.co/elasticsearch/elasticsearch:7.13.0
 ```
